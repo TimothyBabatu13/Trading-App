@@ -19,7 +19,7 @@ export default function Home() {
             <Button className="bg-lightGreen w-[158.615px] rounded-[10px] py-[6px] px-[20px] text-sm">LOG IN ACCOUNT</Button>
           </div>
         </div>
-        <Image className="flex-1 w-full" src={'/landing1.png'} height={200} width={200} alt=""/>
+        <Image className="flex-1 w-full" src={'/Landing1.png'} height={200} width={200} alt=""/>
       </div>
       <div className="py-[42px]" style={{background: 'rgb(11, 17, 24)'}}>
         <div className="w-[85%] mx-auto py-[42px]">
