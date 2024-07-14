@@ -26,6 +26,11 @@ const MobileNavBar = () => {
             icon: ''
         },
         {
+            text: 'Crypto Mining',
+            link: '/crypto-mining',
+            icon: ''
+        },
+        {
             text: 'Forex Trading',
             link: '/forex-trading',
             icon: ''
@@ -99,7 +104,7 @@ const MobileNavBar = () => {
   return (
     <main>
         <div onClick={() => setIsOpen((prev : boolean) => !prev)} className="w-[100vw] h-[100vh] fixed left-0"></div>
-        <div style={{background: 'rgb(11, 17, 24)'}} className=" laptop:hidden fixed min-h-full left-0 w-[300px] overflow-y-scroll">
+        <div style={{background: 'rgb(11, 17, 24)'}} className=" laptop:hidden fixed h-max left-0 w-[300px] over overflow-y-scroll">
             <ul>
                 {data.map((_, id)=>(
                     <li key={id} className="h-[48px] flex items-center">
