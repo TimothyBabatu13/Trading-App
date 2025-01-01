@@ -2,10 +2,12 @@
 import Link from "next/link"
 import MobileNavBar from "./MobileNavBar"
 import { useNavBarContext } from "@/app/context/NavBarContext"
+import { usePathname } from "next/navigation"
 
 const Header = () => {
     const { isOpen, setIsOpen } = useNavBarContext();
-
+    const pathname = usePathname();
+    console.log(pathname)
     const links = [
         {
             text: 'About Us',
