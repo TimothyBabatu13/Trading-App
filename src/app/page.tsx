@@ -1,9 +1,9 @@
+import { CreateAccountButton, LoginButton } from "@/components/component/buttons";
 import CopyTrading from "@/components/component/CopyTrading";
 import Instrument from "@/components/component/Instrument";
 import Marquee from "@/components/component/Marquee";
 import MiningInfo from "@/components/component/MiningInfo";
 import ThreeSimpleSteps from "@/components/component/ThreeSimpleSteps";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,8 +15,8 @@ export default function Home() {
           <h1 className="text-deepWhite text-[23.8px] phone:text-[44px] font-semibold mb-4">Trusted Forex and Crypto Currency Broker</h1>
           <h3 className=" text-lightGray text-xl phone:text-[24px] font-thin mb-6">A trading platform that supports your financial goals.</h3>
           <div className="flex flex-col items-center small:flex-row small:items-start">
-            <Button className="border w-[158.615px] mb-3 phone:mb-0 border-lightGreen text-lightGreen rounded-[5px] py-[6px] px-[20px] text-sm mr-3">CREATE ACCOUNT</Button>
-            <Button className="bg-lightGreen w-[158.615px] rounded-[10px] py-[6px] px-[20px] text-sm">LOG IN ACCOUNT</Button>
+            <CreateAccountButton />
+            <LoginButton />
           </div>
         </div>
         <Image className="flex-1 w-full" src={'/Landing1.png'} height={200} width={200} alt=""/>
@@ -56,7 +56,7 @@ export default function Home() {
             <h3 className=" text-lightGray text-[15px] text-justify mb-3">Whether you prefer trading at your desk or on the go — InspiringTrades has got you covered. The custom-built platform has been adapted for any device you may choose and switching is 100% seamless.</h3>
             
             <div className="flex justify-center">
-              <Link href={''} className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary hover:bg-primary/90 h-10 border w-[158.615px] mb-3 phone:mb-0 border-lightGreen text-lightGreen rounded-[10px] py-[6px] px-[20px] text-sm mr-3">Open in Browser</Link>
+              <Link href={'/login'} className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary hover:bg-primary/90 h-10 border w-[158.615px] mb-3 phone:mb-0 border-lightGreen text-lightGreen rounded-[10px] py-[6px] px-[20px] text-sm mr-3">Open in Browser</Link>
             </div>
           </div>
         </div>

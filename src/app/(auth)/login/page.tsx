@@ -9,7 +9,6 @@ import Link from 'next/link'
 
 const page = () => {
 
-  
   const [reff, setReff] = useState<Element | null | HTMLFormElement >(null)
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -18,8 +17,15 @@ const page = () => {
       const form = new FormData(reff);
       const email = form.get('email');
       const password = form.get('password');
+      const checkIfEntryIsEmpty = (str:FormDataEntryValue | null) => {
+        if(str == null) return
+        return !!str.toString().trim()
+      }
 
-      if(!email || !password) return;
+      
+      if(!checkIfEntryIsEmpty(email) || !checkIfEntryIsEmpty(password)) {
+        alert('Please fill in the form')
+      };
 
       console.log(email, password)
     }
@@ -49,11 +55,13 @@ const page = () => {
         <Input 
           placeholder='Email'
           name='email'
+          type='email'
           icon={<TvIcon height={14} width={42} />}
         />
         <Input 
           placeholder='Password'
           name='password'
+          type='password'
           icon={<TvIcon height={14} width={42} />}
         />
 
