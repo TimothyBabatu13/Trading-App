@@ -2,7 +2,9 @@
 
 const page = () => {
   return (
-    <div>User</div>
+    <div className="flex">
+      
+    </div>
   )
 }
 
