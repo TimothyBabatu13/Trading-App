@@ -1,18 +1,47 @@
-'use client';
 
-import { CircleUserRoundIcon, FolderInput, Home, Power, ShoppingBag, Store, Users } from "lucide-react";
+import { CircleUserRoundIcon, FolderInput, Home,  Power, ShoppingBag, Store, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+  } from "@/components/ui/sheet"
+import { cn } from "@/lib/utils";
+import { LogOutButton } from "./client-buttons";
 
-export const LogOut = () => {
+
+export const LogOut = ({ className } : {
+    className?: string
+})  => {
     return(
-        <Power 
-            className="cursor-pointer"
-        />
+        <LogOutButton className={className}/>
     )
 }
 
+const Drawer = () => {
+    return(
+    <Sheet>
+    <SheetTrigger>
+        <svg role="button" viewBox="0 0 24 24" className="h-6 w-6 cursor-pointer stroke-lightGray mr-3 ">
+            <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
+        </svg>
+    </SheetTrigger>
+    <SheetContent iconClassName="hidden" className="w-[295px]" side={'left'}>
+    <SheetHeader>
+      <SheetTitle></SheetTitle>
+      <SheetDescription>
+      </SheetDescription>
+    </SheetHeader>
+        <NavBarItems />
+    </SheetContent>
+</Sheet>
+
+    )
+}
 const AccountInfo = () => {
     return(
         <div className="h-[142px] p-4" style={{background: 'url("/Office.jpg")'}}>
@@ -76,32 +105,29 @@ const NavBarItems = () => {
     return(
         <div className="fixed left-0 flex flex-col top-0 w-[295px] h-[100vh] bg-white">
             <AccountInfo />
-            <div className="bg-[#0b1118] flex-1 pl-[31px]">
+            <div className="bg-[#0b1118] flex-1 flex flex-col pl-[31px] py-5">
                 {
                     links.map(link =>(
-                        <Link className="flex text-[#a5bdd9]" href={link.url} key={crypto.randomUUID()}>
+                        <Link className="flex items-center flex-1 text-[#a5bdd9]" href={link.url} key={crypto.randomUUID()}>
                             {link.icon}
                             <h5 className="ml-2.5">{link.text}</h5>
                         </Link>
                     ))
                 }
+                <LogOutButton className="h-[18px] w-[18px] text-[#a5bdd9]">
+                    <span className="text-[#a5bdd9]">Sign Out</span>
+                </LogOutButton>
+               
             </div>
         </div>
     )
 }
 
 export const NavBar = () => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-
-    const handleClick = () => {
-        setIsOpen(prev => !prev)
-    }
+    
     return(
         <div>
-            <svg role="button" onClick={handleClick} viewBox="0 0 24 24" className="h-6 w-6 cursor-pointer stroke-lightGray mr-3 ">
-                <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
-            </svg>
-            <NavBarItems />
+            <Drawer />
         </div>
     )
 }

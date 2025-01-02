@@ -1,8 +1,16 @@
 
-import { Power } from "lucide-react";
 import Link from "next/link";
 import { LogOut, NavBar } from "./buttons";
 
+const AccountBalance = () => {
+    
+    return(
+        <div className="flex items-center gap-5">
+            <span>$0.00</span>
+            <span>$0.00</span>
+        </div>
+    )
+}
 export const Header = () => {
     return(
         <header
@@ -12,7 +20,10 @@ export const Header = () => {
                 <NavBar />
                 <Link href={''}>InspiringTrades</Link>
            </div>
-           <LogOut />
+           <div className="flex item-center gap-5">
+                <AccountBalance />
+                <LogOut />
+           </div>
         </header>
     )
 }
