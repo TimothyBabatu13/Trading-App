@@ -28,7 +28,7 @@ export default function Home() {
         </div>
         <Marquee />
         <div className="flex flex-col laptop:flex-row justify-between w-[83%] mx-auto py-[42px]">
-          <div className="laptop:w-[50%] flex justify-center"><Image className="" src={'/Experience.png'} height={795} width={246.906} alt=""/></div>
+          <div className="laptop:w-[50%] flex justify-center"><Image draggable={false} className="" src={'/Experience.png'} height={795} width={246.906} alt=""/></div>
           <div className="laptop:w-[50%]">
             <h1 className=" text-[29px] phone:text-[34px]">Smooth Experience on any Device</h1>
             <h3 className=" text-xl phone:text-2xl text-lightGray my-6">Whether you prefer trading at your desk or on the go — InspiringTrades has got you covered.</h3>
@@ -43,7 +43,7 @@ export default function Home() {
             <h3 className=" text-base text-lightGray">Get the most out of fundamental and technical analysis with our more than 100 most widely-used technical indicators and widgets. Always stay up-to-date on what is happening in the financial markets.</h3>
           </div>
           <div className="856:w-[50%] flex justify-center">
-            <Image src={'/Analysis.png'} alt="" width={272.375} height={340.792}/>
+            <Image draggable={false} src={'/Analysis.png'} alt="" width={272.375} height={340.792}/>
           </div>
         </div>
       </div>

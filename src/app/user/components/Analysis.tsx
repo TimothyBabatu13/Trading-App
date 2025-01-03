@@ -1,6 +1,6 @@
 export const Analysis = () => {
     return (
-        <div>
+        <div className="bg-[red] flex-1">
             Analysis
         </div>
     )

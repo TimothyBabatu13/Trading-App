@@ -1,14 +1,71 @@
-import React from 'react'
+'use client';
+import React, { FormEvent, useEffect, useState } from 'react'
 import { Form } from '../components/Form'
 import { Input } from '../components/Input'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { checkIfFormValueIsEmpty } from '@/lib/utils';
+import Image from 'next/image';
 
 const page = () => {
+
+  const [form, setForm] = useState<Element | HTMLFormElement | null>();
+
+  const handleSignUp = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if(form instanceof HTMLFormElement){
+      const formData = new FormData(form);
+      const email = formData.get('email');
+      const password = formData.get('password');
+      const confirmPassword = formData.get('confirm-password');
+      const firstName = formData.get('first-name');
+      const lastName = formData.get('last-name');
+      const mobileNumber = formData.get('tel');
+      const state = formData.get('state');
+      const city = formData.get('city');
+      const terms = formData.get('terms');
+
+      /* check if all enties are filled */
+      if(!checkIfFormValueIsEmpty(email) || !checkIfFormValueIsEmpty(password) || !checkIfFormValueIsEmpty(confirmPassword) || !checkIfFormValueIsEmpty(firstName) || !checkIfFormValueIsEmpty(lastName) || !checkIfFormValueIsEmpty(mobileNumber) || !checkIfFormValueIsEmpty(state) || !checkIfFormValueIsEmpty(city)){
+        alert('entry is empty');
+        return;
+      }
+
+      /* check if the two password entries match */
+      if(!(password?.toString() === confirmPassword?.toString())){
+        alert(`password doesn't match`);
+        return;
+      }
+      
+      /* check if terms of condition is checked or not */
+      if(!checkIfFormValueIsEmpty(terms)){
+        alert('please click on terms of condition');
+        return;
+      }
+
+      /* function that sends this data to backend */
+    }
+  }
+
+  useEffect(() => {
+    const formElement = document.querySelector('#signup-form');
+    setForm(formElement)
+  }, [])
+
   return (
     <div>
-      <h2 className='text-center text-[34px]'>Sign Up</h2>
-      <Form>
+      <Image 
+        src={'/logo.png'}
+        height={150}
+        width={150}
+        alt='logo'
+        className='mx-auto'
+        draggable={false}
+      />
+      <Form 
+        id='signup-form'
+        onSubmit={handleSignUp}
+      >
         <Input 
           placeholder='Email'
           type='email'
@@ -54,9 +111,9 @@ const page = () => {
           type='checkbox'
           placeholder='I Accept All Terms Of Service'
           id='terms'
-          h={false}
           classname='flex items-center justify-center flex-row-reverse'
           className='w-fit h-fit'
+          name='terms'
         />
         
         <Button 

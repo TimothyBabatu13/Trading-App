@@ -1,12 +1,13 @@
 'use client';
 import Image from 'next/image'
-import React, { FormEvent, useEffect, useRef, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import { Form } from '../components/Form'
 import { Input } from '../components/Input'
-import { TvIcon } from 'lucide-react'
+import { Mail, ToggleRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
+import { checkIfFormValueIsEmpty } from '@/lib/utils';
 
 const page = () => {
   const router = useRouter();
@@ -18,13 +19,8 @@ const page = () => {
       const form = new FormData(reff);
       const email = form.get('email');
       const password = form.get('password');
-      const checkIfEntryIsEmpty = (str:FormDataEntryValue | null) => {
-        if(str == null) return
-        return !!str.toString().trim()
-      }
 
-      
-      if(!checkIfEntryIsEmpty(email) || !checkIfEntryIsEmpty(password)) {
+      if(!checkIfFormValueIsEmpty(email) || !checkIfFormValueIsEmpty(password)) {
         alert('Please fill in the form')
         return
       };
@@ -36,7 +32,7 @@ const page = () => {
   }
 
   useEffect(()=>{
-    const ref = document.querySelector('#form');
+    const ref = document.querySelector('#login-form');
     setReff(ref)
   }, [])
 
@@ -52,20 +48,20 @@ const page = () => {
       />
       <Form 
         onSubmit={handleSubmit}
-        id='form'
+        id='login-form'
       >
         <Input 
           placeholder='Email'
           name='email'
           type='email'
-          icon={<TvIcon height={14} width={42} />}
+          icon={<Mail height={14} width={42} />}
         />
         <Input 
           placeholder='Password'
           name='password'
           type='password'
           className='text-black'
-          icon={<TvIcon height={14} width={42} />}
+          icon={<ToggleRight height={14} width={42} />}
         />
 
         <Button 

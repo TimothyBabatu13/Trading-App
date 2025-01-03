@@ -1,13 +1,31 @@
-'use client'
 import Link from "next/link"
 import MobileNavBar from "./MobileNavBar"
-import { useNavBarContext } from "@/app/context/NavBarContext"
-import { usePathname } from "next/navigation"
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet"
+
+const HeaderNav = () => {
+    return(
+    <Sheet>
+        <SheetTrigger>
+            <svg  viewBox="0 0 24 24" className="h-6 w-6 cursor-pointer stroke-lightGray mr-3 laptop:hidden">
+                <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
+            </svg>
+        </SheetTrigger>
+        <SheetContent iconClassName="hidden" className="w-[295px] p-0" side={'left'}>
+            <SheetHeader>
+                <SheetTitle></SheetTitle>
+                <SheetDescription>
+
+                </SheetDescription>
+            </SheetHeader>
+            <MobileNavBar />
+        </SheetContent>
+    </Sheet>
+
+    )
+}
 
 const Header = () => {
-    const { isOpen, setIsOpen } = useNavBarContext();
-    const pathname = usePathname();
-    console.log(pathname)
+
     const links = [
         {
             text: 'About Us',
@@ -24,11 +42,10 @@ const Header = () => {
     ]
   return (
     <header className="sticky top-0 left-0 w-full py-3 z-50 bg-inherit">
-        {isOpen && <MobileNavBar />}
         
         <div className="flex items-center w-[85%] mx-auto">
             <div className="flex items-center">
-            <svg onClick={() => setIsOpen((prev : boolean) => !prev)} viewBox="0 0 24 24" className="h-6 w-6 cursor-pointer stroke-lightGray mr-3 laptop:hidden"><path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path></svg>
+                <HeaderNav />
                 <Link href="/">INSPIRINGTRADES</Link>
                 {links.map((link, index) => <Link className="text-[#c5bfbf] hidden laptop:block ml-6 text-sm" href={link.href} key={index}>{link.text}</Link>)}
             </div>

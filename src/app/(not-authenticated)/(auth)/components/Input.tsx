@@ -6,13 +6,12 @@ interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
     icon?: React.ReactNode,
     classname? : string,
     className?: string,
-    h?: boolean,
 }
-export const Input = ({ placeholder, h=true, icon, classname, className, ...props } : InputProps) => {
+export const Input = ({ placeholder, icon, classname, className, ...props } : InputProps) => {
     return(
         <div className={cn(`mb-2 ` + classname)}>
             <label htmlFor={props.id} className="block text-[10.5px] mx-21 pl-[14px] text-[#5b728c] mb-1">{placeholder}</label>
-            <div className={"relative  bg-black " + h && 'h-[3rem]'} >
+            <div className={"relative bg-black" } >
                 <span 
                     className="absolute left-0 top-[50%] -translate-y-1/2 text-[#5b728c]"
                 >
@@ -28,15 +27,3 @@ export const Input = ({ placeholder, h=true, icon, classname, className, ...prop
     )
 }
 
-export const CheckBox = ({ placeholder, ...props } : InputProps) => {
-    return(
-        <div>
-            <input 
-                type="checkbox" 
-                name="" 
-                id="" 
-            />
-            <label htmlFor=""></label>
-        </div>
-    )
-}
